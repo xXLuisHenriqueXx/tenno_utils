@@ -76,8 +76,6 @@ function Home() {
 
   if (loading) return <Loader />;
 
-  console.log(worldState?.fissures);
-
   return (
     <main className="flex flex-col gap-8 p-4">
       <header>
