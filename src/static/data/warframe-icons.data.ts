@@ -33,6 +33,9 @@ import neo from "@/assets/fissures/neo.svg";
 import axi from "@/assets/fissures/axi.svg";
 import requiem from "@/assets/fissures/requiem.svg";
 
+import credits from "@/assets/currencies/credits.png";
+import ducats from "@/assets/currencies/ducats.png";
+
 export const WARFRAME_ICONS = {
   factions: {
     Corpus: corpus,
@@ -73,5 +76,9 @@ export const WARFRAME_ICONS = {
     Neo: neo,
     Axi: axi,
     Requiem: requiem,
+  },
+  currencies: {
+    Credits: credits,
+    Ducats: ducats,
   },
 } as const;
