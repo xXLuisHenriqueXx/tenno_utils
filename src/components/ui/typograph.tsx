@@ -5,6 +5,7 @@ const typographyVariants = cva("", {
   variants: {
     variant: {
       p: "text-sm text-muted-foreground",
+      xs: "text-xs text-muted-foreground",
       h1: "text-3xl font-bold",
       h2: "text-2xl font-semibold",
       h3: "text-lg font-semibold",
