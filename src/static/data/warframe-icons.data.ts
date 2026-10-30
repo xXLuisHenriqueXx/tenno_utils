@@ -18,6 +18,7 @@ import sortie from "@/assets/activities/sortie.svg";
 import steelPath from "@/assets/activities/steel-path.svg";
 import invasion from "@/assets/activities/invasion.png";
 import baro from "@/assets/activities/baro.png";
+import weekly from "@/assets/activities/weekly.svg";
 
 import earth from "@/assets/syndicates/earth.svg";
 import solaris from "@/assets/syndicates/solaris.svg";
@@ -56,6 +57,7 @@ export const WARFRAME_ICONS = {
     steelPath,
     invasion,
     baro,
+    weekly,
   },
   syndicates: {
     earth,
