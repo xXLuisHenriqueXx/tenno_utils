@@ -14,6 +14,7 @@ import WeeklyActivities from "./-components/WeeklyActivities";
 
 import type { WorldState } from "@/types/worldState.types";
 import { VoidTrader } from "./-components/VoidTrader";
+import { Sortie } from "./-components/Sortie";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -77,8 +78,6 @@ function Home() {
 
   if (loading) return <Loader />;
 
-  console.log(worldState?.voidTrader);
-
   return (
     <main className="flex flex-col gap-8 p-4">
       <header>
@@ -120,6 +119,7 @@ function Home() {
           <VoidStormFissures
             data={worldState.fissures.filter((fissure) => fissure.isStorm)}
           />
+          <Sortie data={worldState.sortie} />
         </div>
       )}
     </main>

@@ -26,15 +26,13 @@ function VoidTrader({ data }: Props) {
   const { name, planet } = getNodeInfo(data.location);
 
   return (
-    <section className="space-y-3">
+    <section className="space-y-4">
       <SectionHeader title="Void Trader" src={WARFRAME_ICONS.activities.baro} />
 
       <Card>
         <div className="flex items-start justify-between">
           <div>
-            <Typography variant="h3">
-              {data.character ?? "Baro Ki'Teer"}
-            </Typography>
+            <Typography variant="h3">Baro Ki'Teer</Typography>
 
             <Typography variant="p">
               {name} · {planet}

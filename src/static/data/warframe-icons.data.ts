@@ -42,6 +42,7 @@ export const WARFRAME_ICONS = {
     "Orokin Corrupted": corrupted,
     Grineer: grineer,
     Infested: infested,
+    Infestation: infested,
     Orokin: orokin,
     Tenno: tenno,
     Narmer: narmer,

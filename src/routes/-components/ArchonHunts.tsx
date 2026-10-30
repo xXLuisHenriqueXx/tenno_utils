@@ -35,14 +35,16 @@ function ArchonHunts({ data }: Props) {
 
       <Card>
         <header className="flex items-start gap-2">
-          <img className="size-10 object-contain" src={icon} alt={faction} />
+          <div className="flex flex-1 items-center gap-2">
+            <img className="size-10 object-contain" src={icon} alt={faction} />
 
-          <div className="flex-1 min-w-0">
-            <Typography variant="h3">
-              {data.boss ?? "Unknown Archon"}
-            </Typography>
+            <div className="flex-1 min-w-0">
+              <Typography variant="h3">
+                {data.boss ?? "Unknown Archon"}
+              </Typography>
 
-            <Typography variant="p">{faction}</Typography>
+              <Typography variant="p">{faction}</Typography>
+            </div>
           </div>
 
           {data.expiry && (
@@ -51,7 +53,7 @@ function ArchonHunts({ data }: Props) {
         </header>
 
         <div className="flex flex-col gap-1">
-          <h4 className="font-semibold">Missions</h4>
+          <Typography variant="h4">Missions</Typography>
 
           {missions.length > 0 &&
             missions.map((mission, index) => {
@@ -60,7 +62,7 @@ function ArchonHunts({ data }: Props) {
               return (
                 <div
                   key={mission.nodeKey}
-                  className="flex flex-row items-center justify-between gap-2 rounded-lg border border-border p-3"
+                  className="flex flex-row items-center justify-between gap-2 rounded-lg border border-border p-4"
                 >
                   <div>
                     <Typography variant="h5">
