@@ -166,20 +166,18 @@ export interface Fissure extends WorldStateTimedEntry {
   isStorm?: boolean;
 }
 
+export interface Individual {
+  faction?: string;
+  factionKey?: string;
+  reward?: Reward;
+}
+
 export interface Invasion extends WorldStateTimedEntry {
   node?: string;
   nodeKey?: string;
   desc?: string;
-  attacker?: {
-    faction?: string;
-    factionKey?: string;
-    reward?: Reward;
-  };
-  defender?: {
-    faction?: string;
-    factionKey?: string;
-    reward?: Reward;
-  };
+  attacker?: Individual;
+  defender?: Individual;
   count?: number;
   goal?: number;
   completion?: number;

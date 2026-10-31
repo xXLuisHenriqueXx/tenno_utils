@@ -16,6 +16,7 @@ import type { WorldState } from "@/types/worldState.types";
 import { VoidTrader } from "./-components/VoidTrader";
 import { Sortie } from "./-components/Sortie";
 import { SteelPath } from "./-components/SteelPath";
+import { Invasions } from "./-components/Invasions";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -122,6 +123,7 @@ function Home() {
           />
           <Sortie data={worldState.sortie} />
           <SteelPath data={worldState.steelPath} />
+          <Invasions data={worldState.invasions} />
         </div>
       )}
     </main>
