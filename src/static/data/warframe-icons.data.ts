@@ -35,6 +35,8 @@ import requiem from "@/assets/fissures/requiem.svg";
 
 import credits from "@/assets/currencies/credits.png";
 import ducats from "@/assets/currencies/ducats.png";
+import steelEssence from "@/assets/currencies/steel-essence.png";
+import riven from "@/assets/currencies/riven.svg";
 
 export const WARFRAME_ICONS = {
   factions: {
@@ -81,5 +83,7 @@ export const WARFRAME_ICONS = {
   currencies: {
     Credits: credits,
     Ducats: ducats,
+    SteelEssence: steelEssence,
+    Riven: riven,
   },
 } as const;
