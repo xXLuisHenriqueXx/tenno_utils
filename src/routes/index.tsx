@@ -15,6 +15,7 @@ import WeeklyActivities from "./-components/WeeklyActivities";
 import type { WorldState } from "@/types/worldState.types";
 import { VoidTrader } from "./-components/VoidTrader";
 import { Sortie } from "./-components/Sortie";
+import { SteelPath } from "./-components/SteelPath";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -120,6 +121,7 @@ function Home() {
             data={worldState.fissures.filter((fissure) => fissure.isStorm)}
           />
           <Sortie data={worldState.sortie} />
+          <SteelPath data={worldState.steelPath} />
         </div>
       )}
     </main>
