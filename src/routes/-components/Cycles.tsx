@@ -1,5 +1,10 @@
 import { Clock, Info } from "lucide-react";
 
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -55,10 +60,15 @@ function Cycles({ earth, vallis, cambion, cetus, duviri, zariman }: Props) {
     );
 
   return (
-    <section className="space-y-4">
-      <SectionHeader title="Cycles" src={WARFRAME_ICONS.activities.steelPath} />
+    <Collapsible className="space-y-4">
+      <CollapsibleTrigger className="flex w-full">
+        <SectionHeader
+          title="Cycles"
+          src={WARFRAME_ICONS.activities.steelPath}
+        />
+      </CollapsibleTrigger>
 
-      <div className="grid grid-cols-2 gap-2">
+      <CollapsibleContent className="grid grid-cols-2 gap-2">
         {cycles.map(({ name, data, icon }) => {
           const state = getCycleState(data?.state);
           const timeLeft = getTimeRemaining(data?.expiry);
@@ -80,8 +90,8 @@ function Cycles({ earth, vallis, cambion, cetus, duviri, zariman }: Props) {
             </Card>
           );
         })}
-      </div>
-    </section>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 

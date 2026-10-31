@@ -1,3 +1,8 @@
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Card } from "@/components/ui/card";
 import { Empty } from "@/components/ui/empty";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -6,11 +11,6 @@ import { Typography } from "@/components/ui/typograph";
 import type { SteelPath as SteelPathType } from "@/types/worldState.types";
 import { WARFRAME_ICONS } from "@/static/data/warframe-icons.data";
 import { getTimeRemaining } from "@/utils/getTimeRemaining";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 
 interface Props {
   data: SteelPathType | null;

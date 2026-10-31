@@ -1,3 +1,8 @@
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Card } from "@/components/ui/card";
 import { Empty } from "@/components/ui/empty";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -30,74 +35,87 @@ function ArchonHunts({ data }: Props) {
   const missions: Mission[] = data.missions ?? data.variants ?? [];
 
   return (
-    <section className="space-y-4">
-      <SectionHeader title="Archon Hunt" src={WARFRAME_ICONS.factions.Narmer} />
+    <Collapsible className="space-y-4">
+      <CollapsibleTrigger className="flex w-full">
+        <SectionHeader
+          title="Archon Hunt"
+          src={WARFRAME_ICONS.factions.Narmer}
+        />
+      </CollapsibleTrigger>
 
-      <Card>
-        <header className="flex items-start gap-2">
-          <div className="flex flex-1 items-center gap-2">
-            <img className="size-10 object-contain" src={icon} alt={faction} />
+      <CollapsibleContent>
+        <Card>
+          <header className="flex items-start gap-2">
+            <div className="flex flex-1 items-center gap-2">
+              <img
+                className="size-10 object-contain"
+                src={icon}
+                alt={faction}
+              />
 
-            <div className="flex-1 min-w-0">
-              <Typography variant="h3">
-                {data.boss ?? "Unknown Archon"}
-              </Typography>
+              <div className="flex-1 min-w-0">
+                <Typography variant="h3">
+                  {data.boss ?? "Unknown Archon"}
+                </Typography>
 
-              <Typography variant="p">{faction}</Typography>
+                <Typography variant="p">{faction}</Typography>
+              </div>
             </div>
-          </div>
 
-          {data.expiry && (
-            <Typography variant="p">{getTimeRemaining(data.expiry)}</Typography>
-          )}
-        </header>
+            {data.expiry && (
+              <Typography variant="p">
+                {getTimeRemaining(data.expiry)}
+              </Typography>
+            )}
+          </header>
 
-        <div className="flex flex-col gap-1">
-          <Typography variant="h4">Missions</Typography>
+          <div className="flex flex-col gap-1">
+            <Typography variant="h4">Missions</Typography>
 
-          {missions.length > 0 &&
-            missions.map((mission, index) => {
-              const { name, planet } = getNodeInfo(mission.node);
+            {missions.length > 0 &&
+              missions.map((mission, index) => {
+                const { name, planet } = getNodeInfo(mission.node);
 
-              return (
-                <div
-                  key={mission.nodeKey}
-                  className="flex flex-row items-center justify-between gap-2 rounded-lg border border-border p-4"
-                >
-                  <div>
-                    <Typography variant="h5">
-                      {mission.type ??
-                        mission.typeKey ??
-                        `Mission ${index + 1}`}
-                    </Typography>
-
-                    {mission.node && (
-                      <Typography variant="p">
-                        {planet} · {name}
+                return (
+                  <div
+                    key={mission.nodeKey}
+                    className="flex flex-row items-center justify-between gap-2 rounded-lg border border-border p-4"
+                  >
+                    <div>
+                      <Typography variant="h5">
+                        {mission.type ??
+                          mission.typeKey ??
+                          `Mission ${index + 1}`}
                       </Typography>
-                    )}
 
-                    {(mission.minEnemyLevel != null ||
-                      mission.maxEnemyLevel != null) && (
-                      <Badge>
-                        Level {mission.minEnemyLevel ?? "?"}
-                        {mission.maxEnemyLevel != null &&
-                          `–${mission.maxEnemyLevel}`}
-                      </Badge>
-                    )}
+                      {mission.node && (
+                        <Typography variant="p">
+                          {planet} · {name}
+                        </Typography>
+                      )}
+
+                      {(mission.minEnemyLevel != null ||
+                        mission.maxEnemyLevel != null) && (
+                        <Badge>
+                          Level {mission.minEnemyLevel ?? "?"}
+                          {mission.maxEnemyLevel != null &&
+                            `–${mission.maxEnemyLevel}`}
+                        </Badge>
+                      )}
+                    </div>
+
+                    <img
+                      className="size-8 object-contain"
+                      src={icon}
+                      alt={faction}
+                    />
                   </div>
-
-                  <img
-                    className="size-8 object-contain"
-                    src={icon}
-                    alt={faction}
-                  />
-                </div>
-              );
-            })}
-        </div>
-      </Card>
-    </section>
+                );
+              })}
+          </div>
+        </Card>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 

@@ -1,3 +1,9 @@
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Typography } from "@/components/ui/typograph";
 import { Card } from "@/components/ui/card";
 import { Empty } from "@/components/ui/empty";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -10,7 +16,6 @@ import type {
 import { getTimeRemaining } from "@/utils/getTimeRemaining";
 import { getModifierName } from "@/utils/getModifierName";
 import { WARFRAME_ICONS } from "@/static/data/warframe-icons.data";
-import { Typography } from "@/components/ui/typograph";
 
 interface Props {
   data: Archimedea[];
@@ -111,58 +116,64 @@ function Archimedeas({ data }: Props) {
     );
 
   return (
-    <section className="space-y-4">
-      <SectionHeader
-        title="Archimedeas"
-        src={WARFRAME_ICONS.activities.steelPath}
-      />
+    <Collapsible className="space-y-4">
+      <CollapsibleTrigger className="flex w-full">
+        <SectionHeader
+          title="Archimedeas"
+          src={WARFRAME_ICONS.activities.steelPath}
+        />
+      </CollapsibleTrigger>
 
-      {data.map((archimedea) => {
-        const missions = archimedea.missions ?? [];
-        const modifiers = archimedea.personalModifiers ?? [];
+      <CollapsibleContent className="space-y-2">
+        {data.map((archimedea) => {
+          const missions = archimedea.missions ?? [];
+          const modifiers = archimedea.personalModifiers ?? [];
 
-        return (
-          <Card key={archimedea.id}>
-            <header className="flex items-start justify-between">
-              <div>
-                <Typography variant="h3">
-                  {archimedea.type ?? archimedea.typeKey ?? "Unknown"}
+          return (
+            <Card key={archimedea.id}>
+              <header className="flex items-start justify-between">
+                <div>
+                  <Typography variant="h3">
+                    {archimedea.type ?? archimedea.typeKey ?? "Unknown"}
+                  </Typography>
+                  <Typography variant="p">
+                    {missions.length} missions
+                  </Typography>
+                </div>
+
+                <Typography variant="p">
+                  {getTimeRemaining(archimedea.expiry)}
                 </Typography>
-                <Typography variant="p">{missions.length} missions</Typography>
-              </div>
+              </header>
 
-              <Typography variant="p">
-                {getTimeRemaining(archimedea.expiry)}
-              </Typography>
-            </header>
+              <ModifierList title="Personal Modifiers" modifiers={modifiers} />
 
-            <ModifierList title="Personal Modifiers" modifiers={modifiers} />
+              {missions.length > 0 && (
+                <div className="flex flex-col gap-2">
+                  <Typography variant="h4">Missions</Typography>
 
-            {missions.length > 0 && (
-              <div className="flex flex-col gap-2">
-                <Typography variant="h4">Missions</Typography>
+                  <ul className="flex flex-col gap-1">
+                    {missions.map((mission, missionIndex) => (
+                      <MissionCard
+                        key={mission.missionTypeKey ?? mission.missionType}
+                        mission={mission}
+                        index={missionIndex}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                <ul className="flex flex-col gap-1">
-                  {missions.map((mission, missionIndex) => (
-                    <MissionCard
-                      key={mission.missionTypeKey ?? mission.missionType}
-                      mission={mission}
-                      index={missionIndex}
-                    />
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {missions.length === 0 && modifiers.length === 0 && (
-              <Typography variant="p">
-                No mission or modifier details available.
-              </Typography>
-            )}
-          </Card>
-        );
-      })}
-    </section>
+              {missions.length === 0 && modifiers.length === 0 && (
+                <Typography variant="p">
+                  No mission or modifier details available.
+                </Typography>
+              )}
+            </Card>
+          );
+        })}
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 
