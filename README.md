@@ -1,194 +1,181 @@
-Welcome to your new TanStack Start app!
+# Tenno Utils
 
-# Getting Started
+<div style="display: inline_block">
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/react/default.svg"
+    alt="React"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/typescript/default.svg"
+    alt="TypeScript"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/vite/default.svg"
+    alt="Vite"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tanstack/default.svg"
+    alt="TanStack"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img 
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg" 
+    alt="Zustand" 
+    width="24"
+    height="24" 
+  /> 
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tailwind-css/default.svg"
+    alt="Tailwind CSS"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/lucide/default.svg"
+    alt="Lucide"
+    width="24"
+    height="24"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/shadcn-ui/default.svg"
+    alt="shadcn/ui"
+    width="24"
+    height="24"
+  />
+</div>
+<br />
 
-To run this application:
+**A real-time Warframe companion dashboard designed to keep essential in-game information accessible in one place.**
 
+Tenno Utils is a web application that provides a centralized view of Warframe's dynamic world state, helping players track missions, activities, events, and world cycles without constantly switching between the game and external resources.
+
+## Features
+
+### World State Tracking
+
+Access real-time information about Warframe's activities and dynamic events:
+
+- **Alerts** — Available alert missions and their rewards.
+- **Arbitrations** — Current arbitration missions.
+- **Archon Hunt** — Weekly Archon Hunt information.
+- **Archimedeas** — Available Archimedea activities.
+- **Fissures** — Active Void Fissure missions and their locations.
+- **Invasions** — Ongoing invasion missions and rewards.
+- **Sortie** — Current daily Sortie missions.
+- **Steel Path** — Active Steel Path missions.
+- **Syndicate Missions** — Available syndicate assignments.
+- **Void Trader** — Baro Ki'Teer's availability and related information.
+- **Events** — Current in-game events.
+
+### Open World Cycles
+
+Track the current state and rotation of Warframe's open-world locations:
+
+- Cetus / Plains of Eidolon
+- Fortuna / Orb Vallis
+- Cambion Drift
+- Duviri
+- Earth
+- Zariman
+
+### Weekly Activities
+Keep track of recurring weekly activities through a dedicated checklist.
+- Mark activities as completed.
+- Automatically persist progress between sessions.
+- Reset the checklist according to Warframe's weekly reset schedule (Monday at 00:00 UTC).
+
+## Data Source
+```text
+https://api.warframestat.us/pc
+```
+The application uses this data to display current missions, events, rotations, and other dynamic game information.
+Data availability and update frequency depend on the Warframe Stat API.
+
+## Getting Started
+### Installation
+Clone the repository:
 ```bash
-npm install
-npm run dev
+git clone https://github.com/xXLuisHenriqueXx/tenno_utils.git
 ```
 
-# Building For Production
-
-To build this application for production:
-
+Navigate to the project directory:
 ```bash
-npm run build
+cd tenno_utils
 ```
 
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
+Install dependencies:
 ```bash
-npm run lint
-npm run format
-npm run check
+yarn install
 ```
 
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
+### Development
+Start the development server:
+```bash
+yarn dev
 ```
 
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
+The application will be available at:
+```text
+http://localhost:3000
 ```
 
-This will create a link that will navigate to the `/about` route.
+## Available Scripts
+| Command | Description |
+|---|---|
+| `yarn dev` | Starts the development server |
+| `yarn build` | Generates the production build |
+| `yarn preview` | Previews the production build |
+| `yarn lint` | Runs ESLint |
+| `yarn check` | Checks code formatting with Prettier |
+| `yarn format` | Formats the codebase and applies ESLint fixes |
+| `yarn generate-routes` | Regenerates TanStack Router route definitions |
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
+## Project Structure
+The application follows a feature-oriented structure using TanStack Router's file-based routing.
+```text
+tenno_utils/
+├── .github/
+│   └── workflows/       # GitHub Actions workflows
+├── .vscode/             # Editor configuration
+├── src/
+│   ├── routes/          # Application routes
+│   ├── components/      # Reusable UI components
+│   ├── hooks/           # Custom React hooks
+│   ├── stores/          # Zustand state stores
+│   └── ...              # Application modules
+├── public/              # Static assets
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+## Contributing
+Contributions, suggestions, and bug reports are welcome.
+1. Fork the repository.
+2. Create a feature branch.
+3. Implement your changes.
+4. Submit a pull request describing the changes.
+Please keep contributions consistent with the existing TypeScript conventions and project architecture.
 
-## Server Functions
+## Disclaimer
+Tenno Utils is an independent community project and is not affiliated with, endorsed by, or sponsored by Digital Extremes.
+Warframe and all related assets and trademarks belong to their respective owners.
 
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
+---
 
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+**Built for Tenno, by a Tenno.**
