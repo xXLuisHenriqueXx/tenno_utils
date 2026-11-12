@@ -72,6 +72,10 @@ function MissionCard({
           className="size-10 object-contain"
           src={factionIcon}
           alt={faction}
+          width={40}
+          height={40}
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="flex-1 min-w-0">

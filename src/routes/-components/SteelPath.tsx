@@ -62,7 +62,11 @@ function SteelPath({ data }: Props) {
                     <img
                       className="size-4 object-contain"
                       src={WARFRAME_ICONS.currencies.SteelEssence}
-                      alt="Ducats"
+                      alt="Steel Essence"
+                      width={16}
+                      height={16}
+                      loading="lazy"
+                      decoding="async"
                     />
 
                     <Typography variant="p">
@@ -77,6 +81,10 @@ function SteelPath({ data }: Props) {
                   src={WARFRAME_ICONS.currencies.Riven}
                   alt="Riven"
                   className="size-10 object-contain"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
                 />
               )}
             </div>

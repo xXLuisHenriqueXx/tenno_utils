@@ -33,9 +33,9 @@ function Sortie({ data }: Props) {
   const faction = getFaction(data.faction);
   const icon = getFactionIcon(faction);
   let missions: Mission[] = [];
-  if (data.missions && data.missions?.length > 0) {
+  if (data.missions && data.missions.length > 0) {
     missions = data.missions;
-  } else if (data.variants && data.variants?.length > 0) {
+  } else if (data.variants && data.variants.length > 0) {
     missions = data.variants;
   }
 
@@ -53,6 +53,10 @@ function Sortie({ data }: Props) {
                 className="size-10 object-contain"
                 src={icon}
                 alt={faction}
+                width={40}
+                height={40}
+                loading="lazy"
+                decoding="async"
               />
 
               <div>
@@ -112,6 +116,10 @@ function Sortie({ data }: Props) {
                       className="size-8 object-contain"
                       src={icon}
                       alt={faction}
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 );

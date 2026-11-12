@@ -25,7 +25,7 @@ interface Props {
 }
 
 function Fissures({ data }: Props) {
-  if (!data || data.length === 0)
+  if (data.length === 0)
     return (
       <Empty
         title="Fissures"
@@ -57,7 +57,15 @@ function Fissures({ data }: Props) {
           return (
             <Card key={fissure.id} className="gap-2">
               <div className="flex flex-row gap-2">
-                <img className="size-10 object-contain" src={icon} alt={tier} />
+                <img
+                  className="size-10 object-contain"
+                  src={icon}
+                  alt={tier}
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                />
 
                 <div>
                   <Typography className="line-clamp-1" variant="h4">

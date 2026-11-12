@@ -63,6 +63,7 @@ export function WeeklyActivities() {
                   <Checkbox
                     checked={checked}
                     onCheckedChange={() => toggleActivity(activity.id)}
+                    aria-label={activity.title}
                   />
 
                   <div>

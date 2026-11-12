@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Alerts } from "./-components/Alerts";
@@ -24,12 +24,26 @@ export const Route = createFileRoute("/")({
 
 const WORLD_STATE_URL = "https://api.warframestat.us/pc";
 const REFRESH_INTERVAL = 60_000;
+const WORLD_STATE_CACHE_KEY = "tenno_utils_ws_cache";
+
+function getCachedWorldState(): WorldState | null {
+  try {
+    const raw = sessionStorage.getItem(WORLD_STATE_CACHE_KEY);
+    return raw ? (JSON.parse(raw) as WorldState) : null;
+  } catch {
+    return null;
+  }
+}
 
 function Home() {
-  const [worldState, setWorldState] = useState<WorldState | null>(null);
+  const [worldState, setWorldState] = useState<WorldState | null>(
+    getCachedWorldState,
+  );
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [loading, setLoading] = useState(() => worldState === null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(() =>
+    worldState ? new Date() : null,
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,6 +65,12 @@ function Home() {
         setWorldState(data);
         setError(null);
         setLastUpdated(new Date());
+
+        try {
+          sessionStorage.setItem(WORLD_STATE_CACHE_KEY, JSON.stringify(data));
+        } catch {
+          // ignore session storage quota errors
+        }
       } catch (cause) {
         if (controller.signal.aborted) return;
 
@@ -77,6 +97,26 @@ function Home() {
       window.clearInterval(intervalId);
     };
   }, []);
+
+  const regularFissures = useMemo(
+    () =>
+      worldState?.fissures.filter(
+        (fissure) => !fissure.isHard && !fissure.isStorm,
+      ) ?? [],
+    [worldState?.fissures],
+  );
+  const steelPathFissures = useMemo(
+    () =>
+      worldState?.fissures.filter(
+        (fissure) => fissure.isHard && !fissure.isStorm,
+      ) ?? [],
+    [worldState?.fissures],
+  );
+  const voidStormFissures = useMemo(
+    () =>
+      worldState?.fissures.filter((fissure) => fissure.isStorm) ?? [],
+    [worldState?.fissures],
+  );
 
   if (loading) return <Loader />;
 
@@ -110,19 +150,9 @@ function Home() {
           <Alerts data={worldState.alerts} />
           <Archimedeas data={worldState.archimedeas} />
           <ArchonHunts data={worldState.archonHunt} />
-          <Fissures
-            data={worldState.fissures.filter(
-              (fissure) => !fissure.isHard && !fissure.isStorm,
-            )}
-          />
-          <SteelPathFissures
-            data={worldState.fissures.filter(
-              (fissure) => fissure.isHard && !fissure.isStorm,
-            )}
-          />
-          <VoidStormFissures
-            data={worldState.fissures.filter((fissure) => fissure.isStorm)}
-          />
+          <Fissures data={regularFissures} />
+          <SteelPathFissures data={steelPathFissures} />
+          <VoidStormFissures data={voidStormFissures} />
           <Sortie data={worldState.sortie} />
           <SteelPath data={worldState.steelPath} />
           <Invasions data={worldState.invasions} />

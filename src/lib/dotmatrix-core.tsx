@@ -1,9 +1,8 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode  } from "react";
 
 import "@/components/dotmatrix-loader.css";
-import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef } from "react";
 import { useDotMatrixPhases, usePrefersReducedMotion, useCyclePhase } from "@/lib/dotmatrix-hooks";
 
@@ -70,10 +69,6 @@ export function resolveDmxColorTokens(color: string, colorPreset?: DotMatrixColo
   }
 
   const preset = DOT_MATRIX_COLOR_PRESETS[colorPreset];
-  if (!preset) {
-    return { resolvedColor: color, dotFill: color };
-  }
-
   return { resolvedColor: preset.glow, dotFill: preset.fill };
 }
 
@@ -298,11 +293,11 @@ function buildSnakeOrderToIndexMap(): number[] {
 const SNAKE_ORDER: readonly number[] = buildSnakeOrderToIndexMap();
 
 export function snakePathNormFromIndex(index: number): number {
-  return SNAKE_ORDER[index]! / (CELLS - 1);
+  return SNAKE_ORDER[index] / (CELLS - 1);
 }
 
 export function snakePathOrderValue(index: number): number {
-  return SNAKE_ORDER[index]!;
+  return SNAKE_ORDER[index];
 }
 
 function buildSpiralInwardOrderToIndexMap(): number[] {
@@ -350,11 +345,11 @@ function buildSpiralInwardOrderToIndexMap(): number[] {
 const SPIRAL_INWARD_ORDER: readonly number[] = buildSpiralInwardOrderToIndexMap();
 
 export function spiralInwardNormFromIndex(index: number): number {
-  return SPIRAL_INWARD_ORDER[index]! / (CELLS - 1);
+  return SPIRAL_INWARD_ORDER[index] / (CELLS - 1);
 }
 
 export function spiralInwardOrderValue(index: number): number {
-  return SPIRAL_INWARD_ORDER[index]!;
+  return SPIRAL_INWARD_ORDER[index];
 }
 
 function buildOuterRingClockwiseOrderToIndexMap(): number[] {
@@ -379,7 +374,7 @@ function buildOuterRingClockwiseOrderToIndexMap(): number[] {
   ];
 
   for (let t = 0; t < coords.length; t += 1) {
-    const [row, col] = coords[t]!;
+    const [row, col] = coords[t];
     order[rowMajorIndex(row, col)] = t;
   }
 
@@ -400,7 +395,7 @@ function buildMiddleRingAntiClockwiseOrderToIndexMap(): number[] {
   ];
 
   for (let t = 0; t < coords.length; t += 1) {
-    const [row, col] = coords[t]!;
+    const [row, col] = coords[t];
     order[rowMajorIndex(row, col)] = t;
   }
 
@@ -411,7 +406,7 @@ const OUTER_RING_CLOCKWISE_ORDER: readonly number[] = buildOuterRingClockwiseOrd
 const MIDDLE_RING_ANTI_CLOCKWISE_ORDER: readonly number[] = buildMiddleRingAntiClockwiseOrderToIndexMap();
 
 export function outerRingClockwiseOrderValue(index: number): number {
-  return OUTER_RING_CLOCKWISE_ORDER[index]!;
+  return OUTER_RING_CLOCKWISE_ORDER[index];
 }
 
 export function outerRingClockwiseNormFromIndex(index: number): number {
@@ -420,7 +415,7 @@ export function outerRingClockwiseNormFromIndex(index: number): number {
 }
 
 export function middleRingAntiClockwiseOrderValue(index: number): number {
-  return MIDDLE_RING_ANTI_CLOCKWISE_ORDER[index]!;
+  return MIDDLE_RING_ANTI_CLOCKWISE_ORDER[index];
 }
 
 export function middleRingAntiClockwiseNormFromIndex(index: number): number {
@@ -457,11 +452,11 @@ function buildDiagonalSnakeOrderToIndexMap(): number[] {
 const DIAGONAL_SNAKE_ORDER: readonly number[] = buildDiagonalSnakeOrderToIndexMap();
 
 export function diagonalSnakeOrderValue(index: number): number {
-  return DIAGONAL_SNAKE_ORDER[index]!;
+  return DIAGONAL_SNAKE_ORDER[index];
 }
 
 export function diagonalSnakeNormFromIndex(index: number): number {
-  return DIAGONAL_SNAKE_ORDER[index]! / (CELLS - 1);
+  return DIAGONAL_SNAKE_ORDER[index] / (CELLS - 1);
 }
 
 function buildRowWaveSnakeOrderToIndexMap(): number[] {
@@ -497,7 +492,7 @@ const ROW_WAVE_SNAKE_ORDER: readonly number[] = buildRowWaveSnakeOrderToIndexMap
 const ROW_WAVE_SNAKE_MAX_ORDER = Math.max(...ROW_WAVE_SNAKE_ORDER);
 
 export function rowWaveOrderValue(index: number): number {
-  return ROW_WAVE_SNAKE_ORDER[index]!;
+  return ROW_WAVE_SNAKE_ORDER[index];
 }
 
 export function rowWaveNormFromIndex(index: number): number {
@@ -506,7 +501,7 @@ export function rowWaveNormFromIndex(index: number): number {
 
 export function colWaveNormFromIndex(index: number): number {
   const { col } = indexToCoord(index);
-  return N > 1 ? col / (N - 1) : 0;
+  return col / (N - 1);
 }
 
 export function concentricRingNormFromIndex(index: number): number {
@@ -1068,11 +1063,11 @@ function buildSpiralInwardOrderToIndexMap3(): number[] {
 const SPIRAL_INWARD_ORDER_3: readonly number[] = buildSpiralInwardOrderToIndexMap3();
 
 export function spiralInward3NormFromIndex(index: number): number {
-  return SPIRAL_INWARD_ORDER_3[index]! / (MATRIX_SIZE_3 * MATRIX_SIZE_3 - 1);
+  return SPIRAL_INWARD_ORDER_3[index] / (MATRIX_SIZE_3 * MATRIX_SIZE_3 - 1);
 }
 
 export function spiralInward3OrderValue(index: number): number {
-  return SPIRAL_INWARD_ORDER_3[index]!;
+  return SPIRAL_INWARD_ORDER_3[index];
 }
 
 function buildOuterRingClockwiseOrder3(): number[] {
@@ -1098,11 +1093,11 @@ function buildOuterRingClockwiseOrder3(): number[] {
 const OUTER_RING_CLOCKWISE_ORDER_3: readonly number[] = buildOuterRingClockwiseOrder3();
 
 export function outerRingClockwise3OrderValue(index: number): number {
-  return OUTER_RING_CLOCKWISE_ORDER_3[index]!;
+  return OUTER_RING_CLOCKWISE_ORDER_3[index];
 }
 
 export function outerRingClockwise3NormFromIndex(index: number): number {
-  const order = OUTER_RING_CLOCKWISE_ORDER_3[index]!;
+  const order = OUTER_RING_CLOCKWISE_ORDER_3[index];
   if (order < 0) {
     return 0;
   }

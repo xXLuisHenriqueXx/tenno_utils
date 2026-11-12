@@ -25,7 +25,7 @@ interface Props {
 }
 
 function Invasions({ data }: Props) {
-  if (!data || data.length === 0)
+  if (data.length === 0)
     return (
       <Empty
         title="Invasions"
@@ -69,6 +69,10 @@ function Invasions({ data }: Props) {
                     className="size-16 object-contain"
                     src={attacker.icon}
                     alt={attacker.faction}
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <Typography variant="h5">{attacker.faction}</Typography>
                   {attacker.reward && (
@@ -85,6 +89,10 @@ function Invasions({ data }: Props) {
                     className="size-16 object-contain"
                     src={defender.icon}
                     alt={defender.faction}
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <Typography variant="h5">{defender.faction}</Typography>
                   <Typography variant="p">{defender.reward}</Typography>

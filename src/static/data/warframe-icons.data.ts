@@ -16,8 +16,8 @@ import fissure from "@/assets/activities/fissure.svg";
 import nightmare from "@/assets/activities/nightmare.svg";
 import sortie from "@/assets/activities/sortie.svg";
 import steelPath from "@/assets/activities/steel-path.svg";
-import invasion from "@/assets/activities/invasion.png";
-import baro from "@/assets/activities/baro.png";
+import invasion from "@/assets/activities/invasion.webp";
+import baro from "@/assets/activities/void_trader.svg";
 import weekly from "@/assets/activities/weekly.svg";
 
 import earth from "@/assets/syndicates/earth.svg";
@@ -33,9 +33,9 @@ import neo from "@/assets/fissures/neo.svg";
 import axi from "@/assets/fissures/axi.svg";
 import requiem from "@/assets/fissures/requiem.svg";
 
-import credits from "@/assets/currencies/credits.png";
-import ducats from "@/assets/currencies/ducats.png";
-import steelEssence from "@/assets/currencies/steel-essence.png";
+import credits from "@/assets/currencies/credits.webp";
+import ducats from "@/assets/currencies/ducats.webp";
+import steelEssence from "@/assets/currencies/steel-essence.webp";
 import riven from "@/assets/currencies/riven.svg";
 
 export const WARFRAME_ICONS = {

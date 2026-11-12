@@ -174,7 +174,7 @@ export function useDotMatrixPhases({
 
   const clearTimers = useCallback(() => {
     for (let i = 0; i < timeouts.current.length; i += 1) {
-      window.clearTimeout(timeouts.current[i]!);
+      window.clearTimeout(timeouts.current[i]);
     }
     timeouts.current = [];
   }, []);

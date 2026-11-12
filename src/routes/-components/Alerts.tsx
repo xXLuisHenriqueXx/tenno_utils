@@ -54,6 +54,10 @@ function Alerts({ data }: Props) {
                     className="size-10 object-contain"
                     src={icon}
                     alt={faction}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   <div>

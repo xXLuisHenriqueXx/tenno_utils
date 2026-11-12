@@ -4,6 +4,6 @@ export function getNodeInfo(node?: string) {
 
   return {
     name,
-    planet: location?.replace(/\)$/, "") ?? "Unknown planet",
+    planet: location ? location.replace(/\)$/, "") : "Unknown planet",
   };
 }

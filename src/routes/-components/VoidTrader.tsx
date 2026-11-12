@@ -73,6 +73,10 @@ function VoidTrader({ data }: Props) {
                           className="size-4 object-contain"
                           src={WARFRAME_ICONS.currencies.Ducats}
                           alt="Ducats"
+                          width={16}
+                          height={16}
+                          loading="lazy"
+                          decoding="async"
                         />
 
                         <Typography variant="p">
@@ -87,6 +91,10 @@ function VoidTrader({ data }: Props) {
                           className="size-4 object-contain"
                           src={WARFRAME_ICONS.currencies.Credits}
                           alt="Credits"
+                          width={16}
+                          height={16}
+                          loading="lazy"
+                          decoding="async"
                         />
 
                         <Typography variant="p">

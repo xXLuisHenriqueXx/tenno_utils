@@ -76,7 +76,14 @@ function Cycles({ earth, vallis, cambion, cetus, duviri, zariman }: Props) {
           return (
             <Card key={name} className="gap-2">
               <div className="flex items-center gap-2">
-                <img className="size-6 object-contain" src={icon} alt={name} />
+                <img
+                  className="size-6 object-contain"
+                  src={icon}
+                  alt={name}
+                  width={24}
+                  height={24}
+                  decoding="async"
+                />
                 <Typography variant="h3">{name}</Typography>
               </div>
 

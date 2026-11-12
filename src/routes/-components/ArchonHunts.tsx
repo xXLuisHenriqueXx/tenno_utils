@@ -51,6 +51,10 @@ function ArchonHunts({ data }: Props) {
                 className="size-10 object-contain"
                 src={icon}
                 alt={faction}
+                width={40}
+                height={40}
+                loading="lazy"
+                decoding="async"
               />
 
               <div className="flex-1 min-w-0">
@@ -108,6 +112,10 @@ function ArchonHunts({ data }: Props) {
                       className="size-8 object-contain"
                       src={icon}
                       alt={faction}
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 );

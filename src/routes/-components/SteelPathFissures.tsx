@@ -25,7 +25,7 @@ interface Props {
 }
 
 function SteelPathFissures({ data }: Props) {
-  if (!data || data.length === 0)
+  if (data.length === 0)
     return (
       <Empty
         title="Fissures"
@@ -61,11 +61,23 @@ function SteelPathFissures({ data }: Props) {
                   className="size-32 object-contain"
                   src={WARFRAME_ICONS.activities.steelPath}
                   alt="Steel Path"
+                  width={128}
+                  height={128}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
               <div className="flex flex-row gap-2">
-                <img className="size-10 object-contain" src={icon} alt={tier} />
+                <img
+                  className="size-10 object-contain"
+                  src={icon}
+                  alt={tier}
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                />
 
                 <div>
                   <Typography className="line-clamp-1" variant="h4">
