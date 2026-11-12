@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xxluishenriquexx.github.io/tenno_utils/sitemap.xml
