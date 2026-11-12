@@ -83,7 +83,9 @@ function Home() {
   return (
     <main className="flex flex-col gap-8 p-4">
       <header>
-        <Typography variant="h1">Tenno Utils</Typography>
+        <Typography className="text-primary" variant="h1">
+          Tenno Utils
+        </Typography>
         <Typography variant="p">
           {lastUpdated
             ? `Last updated: ${lastUpdated.toLocaleTimeString()}`
